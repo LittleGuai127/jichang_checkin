@@ -9,7 +9,7 @@ email = os.environ.get('EMAIL')
 passwd = os.environ.get('PASSWD')
 # server酱
 SCKEY = os.environ.get('SCKEY')
-print(url,email,passwd,SCKEY)
+print(email)
 
 login_url = '{}/auth/login'.format(url)
 check_url = '{}/user/checkin'.format(url)
@@ -26,7 +26,7 @@ data = {
 try:
     print('进行登录...')
     response = json.loads(session.post(url=login_url,headers=header,data=data).text)
-    print(response['msg'],"登录信息")
+    print(response['msg'],'登录信息')
     # 进行签到
     result = json.loads(session.post(url=check_url,headers=header).text)
     print(result['msg'])
